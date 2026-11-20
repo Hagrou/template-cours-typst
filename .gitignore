@@ -1,0 +1,9 @@
+*/*.$
+.*.drawio.bkp
+
+# Build (site MkDocs, PDF, slides Marp) et releases zippées
+/target/
+/dist/
+*~
+*.swp
+.DS_Store

@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" width="400" height="260" font-family="DejaVu Sans, sans-serif" font-size="12">
+  <!-- Ciel -->
+  <rect x="0" y="0" width="400" height="260" fill="#e8f4fd"/>
+  <!-- Soleil -->
+  <circle cx="50" cy="45" r="22" fill="#ffc107"/>
+  <g stroke="#ffc107" stroke-width="3" stroke-linecap="round">
+    <line x1="50" y1="8" x2="50" y2="16"/><line x1="50" y1="74" x2="50" y2="82"/>
+    <line x1="13" y1="45" x2="21" y2="45"/><line x1="79" y1="45" x2="87" y2="45"/>
+    <line x1="24" y1="19" x2="30" y2="25"/><line x1="70" y1="65" x2="76" y2="71"/>
+    <line x1="24" y1="71" x2="30" y2="65"/><line x1="70" y1="25" x2="76" y2="19"/>
+  </g>
+  <!-- Nuage -->
+  <g fill="#ffffff" stroke="#90a4ae" stroke-width="1.5">
+    <ellipse cx="230" cy="55" rx="55" ry="22"/>
+    <ellipse cx="200" cy="45" rx="28" ry="22"/>
+    <ellipse cx="255" cy="40" rx="30" ry="24"/>
+  </g>
+  <rect x="180" y="50" width="100" height="22" fill="#ffffff"/>
+  <!-- Pluie -->
+  <g stroke="#1e88e5" stroke-width="2" stroke-linecap="round">
+    <line x1="250" y1="85" x2="244" y2="100"/><line x1="265" y1="90" x2="259" y2="105"/>
+    <line x1="280" y1="85" x2="274" y2="100"/><line x1="258" y1="110" x2="252" y2="125"/>
+    <line x1="273" y1="112" x2="267" y2="127"/>
+  </g>
+  <!-- Montagne et sol -->
+  <polygon points="200,260 300,120 400,230 400,260" fill="#8d6e63"/>
+  <polygon points="300,120 280,148 300,142 318,150" fill="#ffffff"/>
+  <!-- Rivière -->
+  <path d="M 330 175 C 300 205, 260 200, 230 225 S 170 240, 150 238" fill="none" stroke="#1e88e5" stroke-width="5" stroke-linecap="round"/>
+  <!-- Océan -->
+  <path d="M 0 210 L 160 210 C 175 225, 190 240, 200 260 L 0 260 Z" fill="#1565c0"/>
+  <!-- Flèche évaporation -->
+  <g fill="none" stroke="#e53935" stroke-width="2" stroke-dasharray="5 4">
+    <path d="M 90 200 C 100 140, 130 90, 170 65"/>
+  </g>
+  <polygon points="170,65 157,66 164,76" fill="#e53935"/>
+  <!-- Étiquettes -->
+  <text x="40" y="160" fill="#c62828" font-weight="bold">évaporation</text>
+  <text x="185" y="20" fill="#455a64" font-weight="bold">condensation</text>
+  <text x="300" y="100" fill="#1565c0" font-weight="bold">précipitations</text>
+  <text x="225" y="218" fill="#0d47a1" font-weight="bold" transform="rotate(-12 225 218)">ruissellement</text>
+  <text x="30" y="242" fill="#ffffff" font-weight="bold">océan</text>
+</svg>

@@ -1,0 +1,8 @@
+{
+  // Racine Typst = docs, comme `--root` dans le Makefile :
+  // les imports absolus ("/lib/theme.typ") des chapitres en dépendent.
+  "tinymist.rootPath": "/workspace/docs",
+  // PDF exportés à l'enregistrement : rangés dans target/preview/ (même
+  // arborescence que docs/), pas à côté des sources. `make clean-preview` les efface.
+  "tinymist.outputPath": "$root/../target/preview/$dir/$name"
+}

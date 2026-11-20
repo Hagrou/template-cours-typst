@@ -1,0 +1,1 @@
+["Prioriser les alertes de l'organisation\n- _Confiance_ : probabilité que ce soit réellement malveillant.\n- _Impact potentiel_ : gravité si c'est vrai, pondérée par la criticité de l'actif touché (un DC vs un poste de test)."]

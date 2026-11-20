@@ -1,0 +1,19 @@
+{
+  "name": "Typst",
+  "build": { "dockerfile": "../Dockerfile", "context": ".." },
+  "workspaceFolder": "/workspace",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
+  "remoteUser": "root",
+  "customizations": {
+    "vscode": {
+      "extensions": ["myriad-dreamin.tinymist"],
+      "settings": {
+        "tinymist.exportPdf": "onSave",
+        "tinymist.formatterMode": "typstyle",
+        "editor.wordWrap": "on",
+        "tinymist.rootPath": "/workspace/docs",
+        "tinymist.outputPath": "$root/../target/preview/$dir/$name"
+      }
+    }
+  }
+}

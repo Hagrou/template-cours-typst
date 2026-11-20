@@ -1,0 +1,333 @@
+/* Hunting In The Noise — feuille de style du site (cible "site").
+   Copiée en style.css à côté de index.html par le build. */
+
+:root {
+  --primaire: #3f51b5;
+  --fond: #ffffff;
+  --texte: #1f2329;
+  --attenue: #5f6670;
+  --code-fond: #f4f5f7;
+  --bordure: #e1e4e8;
+  --note-fond: #f5f6fb;
+  --question: #7c4dff;
+  --plus: #00897b;
+  --exemple: #d81b60;
+  --afaire: #ff8f00;
+  --retenir: #1e88e5;
+  --reponse: #43a047;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primaire: #8c9eff;
+    --fond: #1b1d22;
+    --texte: #e3e5e8;
+    --attenue: #9aa1ab;
+    --code-fond: #262930;
+    --bordure: #353943;
+    --note-fond: #23262e;
+    color-scheme: dark;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
+
+body {
+  margin: 0;
+  background: var(--fond);
+  color: var(--texte);
+  font: 16px/1.6 "Noto Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+a { color: var(--primaire); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Bandeau */
+.bandeau {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  gap: 1rem;
+  align-items: baseline;
+  flex-wrap: wrap;
+  padding: .8rem 1.5rem;
+  background: var(--bandeau, #3f51b5);
+  color: #fff;
+}
+.bandeau a { color: #fff; font-weight: 700; font-size: 1.15rem; }
+.bandeau span { opacity: .85; font-size: .9rem; }
+
+/* Mise en page : sommaire latéral + contenu */
+.page {
+  display: grid;
+  grid-template-columns: 18rem minmax(0, 1fr);
+  max-width: 82rem;
+  margin: 0 auto;
+}
+
+.sommaire {
+  position: sticky;
+  top: 3.4rem;
+  align-self: start;
+  max-height: calc(100vh - 3.4rem);
+  overflow-y: auto;
+  padding: 1.5rem 1rem 2rem 1.5rem;
+  font-size: .85rem;
+  border-right: 1px solid var(--bordure);
+}
+.sommaire .nav-titre { display: none; }
+.sommaire ul { list-style: none; margin: 0; padding: 0; }
+.sommaire ul ul { padding-left: .9rem; border-left: 1px solid var(--bordure); margin: .2rem 0 .5rem .3rem; }
+.sommaire li { margin: .15rem 0; }
+.sommaire a { color: var(--texte); }
+.sommaire a:hover { color: var(--primaire); }
+.sommaire summary { cursor: pointer; }
+.sommaire summary a { font-weight: 600; }
+.sommaire .nav-partie {
+  margin-top: 1.2rem;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--primaire);
+}
+
+main {
+  padding: 1rem 2.5rem 4rem;
+  min-width: 0;
+}
+
+/* Intercalaires de partie */
+.partie {
+  margin: 3.5rem 0 0;
+  padding-bottom: .4rem;
+  border-bottom: 3px solid var(--primaire);
+  font-size: .8rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--primaire);
+}
+
+/* Titres */
+h2, h3, h4, h5, h6 { line-height: 1.3; }
+h2 {
+  margin: 2.5rem 0 1rem;
+  font-size: 2rem;
+}
+h2::before {
+  content: "Hunting In The Noise";
+  display: block;
+  margin-bottom: .4em;
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--primaire);
+}
+h3 {
+  margin: 2.2rem 0 .8rem;
+  padding-bottom: .3rem;
+  border-bottom: 1px solid var(--bordure);
+  font-size: 1.45rem;
+  color: var(--primaire);
+}
+h4 { margin: 1.8rem 0 .6rem; font-size: 1.2rem; }
+h5 { margin: 1.4rem 0 .5rem; font-size: 1.05rem; }
+
+/* Code */
+code {
+  padding: .1em .3em;
+  border-radius: 3px;
+  background: var(--code-fond);
+  font: .88em/1.5 "DejaVu Sans Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+pre {
+  overflow-x: auto;
+  padding: .8rem 1rem;
+  border: 1px solid var(--bordure);
+  border-radius: 4px;
+  background: var(--code-fond);
+  font: .85em/1.5 "DejaVu Sans Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+pre code { padding: 0; background: none; font-size: 1em; }
+
+/* Tableaux */
+table {
+  display: block;
+  overflow-x: auto;
+  max-width: 100%;
+  margin: 1rem 0;
+  border-collapse: collapse;
+  font-size: .9rem;
+}
+th, td {
+  padding: .45rem .7rem;
+  border: 1px solid var(--bordure);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: color-mix(in srgb, var(--primaire) 12%, transparent); }
+tbody tr:nth-child(even) { background: color-mix(in srgb, var(--texte) 3%, transparent); }
+
+/* Notes pédagogiques (blockquotes), cf. convention des emojis */
+blockquote {
+  margin: 1rem 0;
+  padding: .6rem 1rem;
+  border-left: 4px solid var(--primaire);
+  border-radius: 0 4px 4px 0;
+  background: var(--note-fond);
+}
+blockquote p:first-child { margin-top: 0; }
+blockquote p:last-child { margin-bottom: 0; }
+blockquote.note-question { border-left-color: var(--question); }
+blockquote.note-plus { border-left-color: var(--plus); }
+blockquote.note-exemple { border-left-color: var(--exemple); }
+blockquote.note-afaire { border-left-color: var(--afaire); }
+blockquote.note-retenir { border-left-color: var(--retenir); }
+
+/* Réponses repliables */
+details.reponse {
+  margin: -.5rem 0 1.2rem;
+  padding: .5rem 1rem;
+  border-left: 4px solid var(--reponse);
+  border-radius: 0 4px 4px 0;
+  background: color-mix(in srgb, var(--reponse) 8%, transparent);
+}
+details.reponse summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--reponse);
+}
+details.reponse[open] summary { margin-bottom: .4rem; }
+
+/* Colonnes */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+/* Images */
+figure.illustration { margin: 1.2rem 0; text-align: center; }
+figure.illustration img { max-width: 100%; height: auto; background: #fff; border-radius: 4px; }
+
+/* Schémas Typst (SVG) : fond clair conservé, lisible en mode sombre */
+figure.schema { margin: 1.2rem 0; text-align: center; }
+figure.schema svg { max-width: 100%; height: auto; padding: .6rem; background: #fff; border-radius: 4px; }
+figure.schema figcaption { margin-top: .4rem; font-size: .85rem; color: var(--attenue); }
+
+hr { margin: 2rem 0; border: 0; border-top: 1px solid var(--bordure); }
+
+/* Écran étroit : sommaire au-dessus, colonnes empilées */
+@media (max-width: 900px) {
+  .page { display: block; }
+  .sommaire {
+    position: static;
+    max-height: none;
+    border-right: 0;
+    border-bottom: 1px solid var(--bordure);
+  }
+  main { padding: 1rem; }
+  .grid { grid-template-columns: 1fr; }
+}
+
+@media print {
+  .bandeau, .sommaire { display: none; }
+  .page { display: block; }
+  details.reponse { display: block; }
+}
+
+/* ==========================================================================
+   Thèmes (--input theme=…, classe theme-<nom> sur <html>, cf. lib/theme.typ)
+   Le thème « classique » n'a pas de règle : c'est le style ci-dessus.
+   ========================================================================== */
+
+/* 🖥️ SOC de nuit : toujours sombre, titres en console */
+html.theme-soc {
+  --primaire: #3fb950; --fond: #0d1117; --texte: #e6edf3; --attenue: #8b949e;
+  --code-fond: #161b22; --bordure: #30363d; --note-fond: #161b22;
+  --question: #a371f7; --plus: #39c5cf; --exemple: #f778ba; --afaire: #d29922;
+  --retenir: #3fb950; --reponse: #56d364; --bandeau: #010409;
+  color-scheme: dark;
+}
+.theme-soc .bandeau { border-bottom: 1px solid var(--bordure); }
+.theme-soc .bandeau span::after { content: "  ● SOC · LIVE"; color: #f85149; font-family: "DejaVu Sans Mono", monospace; }
+.theme-soc h2, .theme-soc h3, .theme-soc h4 { font-family: "DejaVu Sans Mono", ui-monospace, monospace; }
+.theme-soc h3::before { content: "> "; color: var(--primaire); }
+.theme-soc h2::after { content: "▌"; color: var(--primaire); animation: clignote 1s steps(1) infinite; }
+@keyframes clignote { 50% { opacity: 0; } }
+
+/* 🚨 Cellule de crise : rouge alerte, bande de signalisation */
+html.theme-crise {
+  --primaire: #c62828; --question: #6a1b9a; --plus: #00695c; --exemple: #ad1457;
+  --afaire: #ef6c00; --retenir: #c62828; --reponse: #2e7d32; --bandeau: #1c1c1c;
+  --note-fond: #fbf4f4;
+}
+@media (prefers-color-scheme: dark) {
+  html.theme-crise { --primaire: #ff5252; --retenir: #ff5252; --note-fond: #2a2020; }
+}
+.theme-crise .bandeau {
+  border-bottom: 8px solid transparent;
+  border-image: repeating-linear-gradient(-45deg, #ffc400 0 10px, #1c1c1c 10px 20px) 8;
+}
+.theme-crise .bandeau::after {
+  content: "⚠ CRISE CYBER"; margin-left: auto; padding: .15rem .5rem; border-radius: 2px;
+  background: #c62828; color: #fff; font-size: .75rem; font-weight: 700; letter-spacing: .08em;
+}
+.theme-crise h2, .theme-crise h3 { text-transform: uppercase; letter-spacing: .02em; }
+
+/* 🗂️ Rapport d'incident : papier, machine à écrire, marquage TLP */
+html.theme-tlp {
+  --primaire: #1f3a5f; --fond: #f6f1e4; --texte: #1a1a1a; --code-fond: #ece4cf;
+  --bordure: #d8ccb0; --note-fond: #efe8d6; --question: #5b3f8c; --plus: #2f6f5e;
+  --exemple: #8c2f39; --afaire: #b36b00; --retenir: #1f3a5f; --reponse: #3f6b2a;
+  --bandeau: #1f3a5f; color-scheme: light;
+}
+.theme-tlp body { font-family: "Noto Serif", Georgia, serif; }
+.theme-tlp h2, .theme-tlp h3, .theme-tlp h4, .theme-tlp .bandeau a {
+  font-family: "Liberation Mono", "Courier New", monospace;
+}
+.theme-tlp .bandeau::after {
+  content: "TLP:CLEAR"; margin-left: auto; padding: .15rem .5rem; background: #000; color: #fff;
+  font: 700 .75rem "DejaVu Sans Mono", monospace;
+}
+
+/* 🛡️ Blue Team : marine et bleu électrique, titres en bandeau */
+html.theme-bouclier {
+  --primaire: #0077c8; --question: #6c4cf1; --plus: #00897b; --exemple: #e0457b;
+  --afaire: #f59e0b; --retenir: #00a6fb; --reponse: #10b981; --bandeau: #0a2342;
+}
+@media (prefers-color-scheme: dark) {
+  html.theme-bouclier { --primaire: #4fc3ff; --fond: #071629; --note-fond: #0d2240; --bordure: #1d3557; }
+}
+.theme-bouclier .bandeau { border-bottom: 3px solid #00a6fb; }
+.theme-bouclier h3 {
+  padding: .4rem .8rem; border: 0; border-left: 6px solid #00a6fb;
+  background: #0a2342; color: #fff;
+}
+
+/* 😈 Red Team néon : toujours sombre, magenta / cyan, titres « glitch » */
+html.theme-neon {
+  --primaire: #ff2e88; --fond: #120a1f; --texte: #ece6ff; --attenue: #9e9ac8;
+  --code-fond: #1c1230; --bordure: #3a2d5c; --note-fond: #1a1029;
+  --question: #b388ff; --plus: #64ffda; --exemple: #ff2e88; --afaire: #ffd740;
+  --retenir: #00e5ff; --reponse: #69f0ae; --bandeau: #0a0514;
+  color-scheme: dark;
+}
+.theme-neon .bandeau { border-bottom: 2px solid #ff2e88; box-shadow: 0 0 12px #ff2e8866; }
+.theme-neon h2, .theme-neon h3 {
+  font-family: "DejaVu Sans Mono", ui-monospace, monospace; text-transform: uppercase;
+  text-shadow: -2px 0 #00e5ffaa, 2px 0 #ff2e88aa;
+}
+.theme-neon h3 { color: #fff; }
+.theme-neon h2::before { text-shadow: none; }
+
+/* Formules mathématiques (SVG produit par html.frame, cf. lib/theme.typ) */
+div.formule { text-align: center; margin: 1em 0; }
+span.formule svg { vertical-align: middle; }

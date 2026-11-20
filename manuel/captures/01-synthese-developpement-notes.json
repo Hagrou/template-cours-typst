@@ -1,0 +1,1 @@
+["- **Dwell time** = durée pendant laquelle l'attaquant est présent dans le SI sans être détecté (de la compromission initiale à la détection).\n- Le **MTTD (Mean Time To Detect)** est sa moyenne sur l'ensemble des incidents.\n\nPlus le dwell time est court, moins l'attaquant a le temps de progresser.\n\nC'est la métrique de résultat d'un programme de détection."]
